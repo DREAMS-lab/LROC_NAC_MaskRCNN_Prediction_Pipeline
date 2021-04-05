@@ -52,10 +52,6 @@ def crop_image(input_filename, out_path, count_limit=-1, img_format="PNG", exten
             if j + tile_size_y > ysize:
                 j = ysize - tile_size_y
 
-            com_string = "gdal_translate -scale -ot Byte -of {} -srcwin ".format(img_format) + str(i) + ", " + str(j) + ", " + str(x_inc) + ", " + str(
-                y_inc) + " " + str(input_filename) + " " + str(out_path) + str(output_filename) + str(
-                i) + "_" + str(j) + extension
-
             com_string = f"gdal_translate -scale -ot Byte -of {img_format} " \
                          f"-srcwin {str(i)}, {str(j)}, {str(x_inc)}, {str(y_inc)} {str(input_filename)} " \
                          f"{os.path.join(out_path, output_filename)}{str(i)}_{str(j) + extension}"
