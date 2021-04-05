@@ -6,7 +6,7 @@ from torchvision.models.detection.mask_rcnn import MaskRCNNPredictor
 from torchvision.models.detection.rpn import AnchorGenerator
 import torch
 import os
-from MaskRCNN.visualize import display_instances
+# from MaskRCNN.visualize import display_instances
 
 
 def get_model_instance_segmentation(num_classes, image_mean_, image_std_, stats=False):
@@ -80,7 +80,8 @@ def generate_mask(img_path, img_name, mask_rcnn, device, mask_path, display=Fals
         labels = labels[indices]
         scores = scores[indices]
         image = image.permute((1, 2, 0)).cpu().detach().numpy() * 255
-        display_instances(image, boxes, masks, labels, class_names=["background", "crater"], scores=scores)
+        # Uncomment this line and install its dependencies (matplotlib) to view the predictions
+        # display_instances(image, boxes, masks, labels, class_names=["background", "crater"], scores=scores)
 
     squashed = masks.any(axis=2)
     new_mask = np.zeros((350, 350))
